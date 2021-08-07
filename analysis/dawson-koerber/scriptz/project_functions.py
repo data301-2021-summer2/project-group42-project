@@ -9,7 +9,8 @@ import statistics as stat
 #Functions
 def wranglemania2K21(datapath): #Loads and wrangles data for my research question
     
-    data = pd.read_csv(datapath) #Load dataframe from path E.g. wranglemania2K21("insurance.csv")
+    data = pd.read_csv(datapath) #Load dataframe from path 
+                                 #E.g. wranglemania2K21("../../data/raw/insurance.csv")
 
     df1 = (
         data
@@ -39,3 +40,21 @@ def plots(df): #Creates plots for my research question
     #Displays average medical charges for smokers and non-smokers
     sns.barplot(x='smoker',y='charges',data=df, estimator=np.average)
     plt.show()
+    
+def data_proccessor_both(datapath): #Loads and wrangles data for both reseach questions
+    
+    data = pd.read_csv(datapath) #Load dataframe from path 
+                                 #E.g. data_proccessor_both("../../data/raw/insurance.csv")
+
+    df1 = (
+        data
+        .drop('region' , 1)    #Drops the region
+    )
+
+    df2 = (
+        df1
+        .reset_index()          #Resets the index
+        .drop('index' , 1)      #Removes the od index
+    )
+    
+    return df2                  #Returns the processed dataframe
