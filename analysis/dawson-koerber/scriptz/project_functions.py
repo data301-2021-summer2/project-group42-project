@@ -31,14 +31,17 @@ def plots(df): #Creates plots for my research question
     
     #Shows the distribution of BMI amongst smokers and non-smokers
     sns.boxplot(x='bmi', y='smoker', data=df)
+    plt.title("Comparison of BMIs of of Smokers & Non-smokers")
     plt.show()
 
     #Shows the distribution of medical charges between smokers and non-smokers
     sns.histplot(data=df, x="charges", hue ="smoker")
+    plt.title("Distribution of Medical Charges of Smokers & Non-smokers (BMI > 45)")
     plt.show()
 
     #Displays average medical charges for smokers and non-smokers
     sns.barplot(x='smoker',y='charges',data=df, estimator=np.average)
+    plt.title("Average Medical Costs of Smokers & Non-smokers (BMI > 45)")
     plt.show()
     
 def data_proccessor_both(datapath): #Loads and wrangles data for both reseach questions
