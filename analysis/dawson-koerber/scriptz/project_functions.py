@@ -25,3 +25,17 @@ def wranglemania2K21(datapath): #Loads and wrangles data for my research questio
     )
     
     return df2                  #Returns the processed dataframe
+
+def plots(df): #Creates plots for my research question
+    
+    #Shows the distribution of BMI amongst smokers and non-smokers
+    sns.boxplot(x='bmi', y='smoker', data=df)
+    plt.show()
+
+    #Shows the distribution of medical charges between smokers and non-smokers
+    sns.histplot(data=df, x="charges", hue ="smoker")
+    plt.show()
+
+    #Displays average medical charges for smokers and non-smokers
+    sns.barplot(x='smoker',y='charges',data=df, estimator=np.average)
+    plt.show()
